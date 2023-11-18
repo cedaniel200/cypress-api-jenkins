@@ -1,5 +1,11 @@
 # cypress-api-jenkins
-Proyecto de Cypress básico con ejemplo de los comandos Intercep y Request. usando CI/CD con Jenkins 
+Proyecto de Cypress básico con ejemplo de los comandos **Intercep** y **Request**. usando CI/CD con **Jenkins**. 
+
+## Intercep
+Se usa [JSON Server](https://github.com/typicode/json-server) como aplicación/API a probar.
+
+## Request
+Se usa [reqres.in](https://reqres.in) como la API a probar.
 
 # Prerequisitos 
 * Instalar [Node](https://nodejs.org/en/download) v18.15.0 o superior
