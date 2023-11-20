@@ -5,12 +5,12 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
         stage('test') {
             steps {
-                bat 'npx run'
+                sh 'npx run'
             }
         }
     }
