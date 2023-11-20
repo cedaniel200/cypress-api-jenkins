@@ -3,10 +3,13 @@ pipeline {
         docker { image 'cypress/browsers:latest' }
     }
     stages {
-        stage('build and test') {
+        stage('build') {
             steps {
                 sh 'npm ci'
-
+            }
+        }
+        stage('test') {
+            steps {
                 sh 'npm run test'
             }
         }
