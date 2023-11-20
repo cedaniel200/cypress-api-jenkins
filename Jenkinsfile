@@ -10,7 +10,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'npx run'
+                sh 'npm run test'
             }
         }
     }
