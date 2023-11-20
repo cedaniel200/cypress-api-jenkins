@@ -8,7 +8,7 @@ pipeline {
                 sh """
                     cd /var/jenkins_home/workspace/
                     rm -f -r json-server-master
-                    mkdir json-server-master
+                    sudo mkdir json-server-master
                     cd json-server-master
                 """
                 git 'https://github.com/typicode/json-server.git'
