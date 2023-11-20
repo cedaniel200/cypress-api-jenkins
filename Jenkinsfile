@@ -5,6 +5,8 @@ pipeline {
     stages {
         stage('run json-server') {
             steps {
+                sh 'cd /var/jenkins_home/workspace/'
+                sh 'ls'
                 sh 'rm -r json-server-master'
                 sh 'mkdir json-server-master'
                 sh 'ls'
@@ -17,6 +19,7 @@ pipeline {
         }
         stage('build') {
             steps {
+                sh 'cd /var/jenkins_home/workspace/cypress-test'
                 sh 'ls'
                 sh 'npm ci'
             }
