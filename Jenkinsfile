@@ -5,8 +5,6 @@ pipeline {
     stages {
         stage('run json-server') {
             steps {
-                sh 'cd ..'
-                sh 'ls'
                 sh 'mkdir json-server-master'
                 sh 'ls'
                 sh 'cd json-server-master'
