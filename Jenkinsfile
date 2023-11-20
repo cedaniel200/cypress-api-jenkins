@@ -7,9 +7,6 @@ pipeline {
             steps {
                 sh """
                     cd /var/jenkins_home/workspace/
-                    chmod -R 777
-                    rm -f -r json-server-master
-                    mkdir -p json-server-master
                     cd json-server-master
                 """
                 git 'https://github.com/typicode/json-server.git'
