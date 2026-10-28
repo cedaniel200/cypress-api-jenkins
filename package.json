@@ -4,8 +4,8 @@
   "private": true,
   "description": "Ejemplo de pruebas de API con Cypress, JSON Server y Jenkins",
   "scripts": {
-    "preapi": "node -e \"require('fs').copyFileSync('db.seed.json','db.json')\"",
-    "api": "json-server --watch db.json --port 3000",
+    "seed": "node -e \"require('fs').copyFileSync('db.seed.json','db.json')\"",
+    "api": "npm run seed && json-server --watch db.json --port 3000",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "test": "start-server-and-test api http://localhost:3000 cy:run"

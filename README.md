@@ -15,7 +15,7 @@ JSON Server y Jenkins ejecuta la suite completa.
 
 - **5 pruebas**: una de `cy.intercept` y cuatro de `cy.request`.
 - **JSON Server local** con datos de ejemplo; sin APIs externas.
-- **Base de datos reproducible**: `db.seed.json` se copia a `db.json` antes de cada ejecución.
+- **Base de datos reproducible**: `npm run api` copia `db.seed.json` a `db.json` antes de arrancar.
 - **Jenkinsfile** con etapas de instalación y pruebas.
 - **Cypress 16** con configuración en `cypress.config.js`.
 
@@ -32,8 +32,8 @@ npm ci
 npm test
 ```
 
-`npm test` copia `db.seed.json` a `db.json`, levanta JSON Server en el puerto 3000 y ejecuta
-Cypress. Al terminar, detiene el servidor.
+`npm test` arranca la API, que copia `db.seed.json` a `db.json`, levanta JSON Server en el
+puerto 3000 y ejecuta Cypress. Al terminar, detiene el servidor.
 
 Para trabajar de forma interactiva:
 
@@ -58,7 +58,7 @@ Jenkinsfile                      # pipeline de Jenkins
 cypress.config.js                # baseUrl y configuración de Cypress
 ```
 
-## Qué demuestra
+## Qué valida cada spec
 
 | Spec | Comando | Qué valida |
 |---|---|---|
@@ -81,8 +81,8 @@ Usa `bat` porque el agente original era Windows. En un agente Linux, cambia `bat
 
 ## Ten en cuenta
 
-- **`db.json` se genera** desde `db.seed.json` y está ignorado por git; las mutaciones de las
-  pruebas no ensucian el repositorio.
+- **`db.json` se genera** desde `db.seed.json` al arrancar la API y está ignorado por git; las
+  mutaciones de las pruebas no ensucian el repositorio. La semilla versionada es `db.seed.json`.
 - **No hay dependencias externas**: todo corre contra JSON Server en `localhost:3000`.
 - **Cypress 16 requiere Node 22 o superior.**
 

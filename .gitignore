@@ -133,4 +133,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Generado desde db.seed.json
 db.json
