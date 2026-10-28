@@ -1,14 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Install') {
             steps {
-                bat 'npm install'
+                bat 'npm ci'
             }
         }
-        stage('test') {
+        stage('Test') {
             steps {
-                bat 'npx run'
+                bat 'npm test'
             }
         }
     }

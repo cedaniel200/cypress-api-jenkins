@@ -1,21 +1,12 @@
-describe('Intercept Demo', () => {
+describe('Intercept', () => {
+  it('mockea la respuesta de /posts', () => {
+    cy.intercept('GET', '/posts', { fixture: 'intercept/posts.json' }).as('getPosts')
 
-    it('Mocked API Response', () => {
+    cy.visit('/')
+    cy.window().then((win) => win.fetch('/posts'))
 
-        cy.intercept('GET', '/posts', {
-            fixture: 'intercept/posts.json'
-        }).as('getPosts')
-
-        cy.intercept('GET', '/db', {
-            fixture: 'intercept/db.json'
-        }).as('getDB')
-
-        cy.visit('http://localhost:3000')
-        
-        cy.wait('@getDB')
-
-        cy.get(':nth-child(1) > sup').should('contain', 3)
-        cy.get(':nth-child(2) > sup').should('contain', 2)
-    })
-    
-});
+    cy.wait('@getPosts')
+      .its('response.body.posts')
+      .should('have.length', 3)
+  })
+})
