@@ -42,6 +42,31 @@ npm run api
 npm run cy:open
 ```
 
+## Cómo funcionan los datos
+
+JSON Server no guarda los datos en memoria: lee y escribe un archivo.
+
+- **`db.seed.json`** es la semilla versionada con los datos iniciales.
+- **`db.json`** es el archivo de trabajo que se genera desde la semilla.
+- **`db.json` está ignorado por git**; no se edita a mano ni se sube al repositorio.
+
+Los dos scripts que hacen esto son:
+
+```json
+"seed": "node -e \"...copyFileSync('db.seed.json','db.json')\"",
+"api": "json-server --watch db.json --port 3000"
+```
+
+`seed` copia `db.seed.json` a `db.json`. `api` ejecuta `seed` y luego levanta JSON Server:
+
+```text
+npm run api
+  → npm run seed        (db.seed.json → db.json)
+  → json-server --watch db.json --port 3000
+```
+
+Por eso `npm test` siempre empieza con los mismos datos: arranca `api`, que vuelve a crear `db.json` desde la semilla. Si quieres cambiar los datos iniciales, edita `db.seed.json`, no `db.json`.
+
 ## Estructura
 
 ```text
